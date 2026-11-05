@@ -1,0 +1,196 @@
+renv::install("readxl")
+library(readxl)
+datos <- read_excel("datos/base_final_turismo_empleo.xlsx")
+dim(datos)
+renv::install(c("dplyr", "tidyr", "ggplot2", "ggrepel", "ggridges",
+                "scales", "forcats", "stringr"))
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggrepel)
+library(ggridges)
+library(scales)
+library(forcats)
+library(stringr)
+
+datos <- read_excel("datos/base_final_turismo_empleo.xlsx")
+
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggrepel)
+library(ggridges)
+library(scales)
+library(forcats)
+library(stringr)
+
+# Cargar la base
+datos <- read_excel("datos/base_final_turismo_empleo.xlsx")
+
+# Limpieza básica
+datos <- datos |>
+  mutate(
+    provincia = str_squish(provincia),
+    zona      = if_else(urbano == 1, "Urbano", "Rural"),
+    educ      = factor(educacion, levels = 1:5, labels = paste("Nivel", 1:5)),
+    calidad_f = factor(calidad_empleo, levels = 0:1,
+                       labels = c("Empleo inadecuado", "Empleo de calidad"))
+  )
+
+# Promedio nacional ponderado
+nac <- weighted.mean(datos$calidad_empleo, datos$fexp)
+
+# Tabla por provincia + índice de dinamismo turístico
+prov <- datos |>
+  group_by(provincia) |>
+  summarise(
+    calidad          = weighted.mean(calidad_empleo, fexp),
+    n                = n(),
+    pob              = sum(fexp),
+    establecimientos = first(establecimientos),
+    alojamiento      = first(alojamiento),
+    .groups = "drop"
+  ) |>
+  mutate(
+    idx_turismo = as.numeric(scale(scale(log(establecimientos))[, 1] +
+                                     scale(log(alojamiento))[, 1])),
+    nivel_turismo = factor(ntile(idx_turismo, 3),
+                           labels = c("Dinamismo bajo", "Dinamismo medio", "Dinamismo alto"))
+  )
+
+# Pegar el índice a la base individual
+datos <- left_join(datos, select(prov, provincia, idx_turismo, nivel_turismo),
+                   by = "provincia")
+
+nac
+print(prov |> arrange(desc(calidad)), n = 24)
+
+# ============ 5. Gráfico 1: barras por provincia ============
+g1 <- prov |>
+  mutate(provincia = fct_reorder(provincia, calidad)) |>
+  ggplot(aes(x = calidad, y = provincia, fill = nivel_turismo)) +
+  geom_col(width = 0.7) +
+  geom_vline(xintercept = nac, linetype = "dashed", colour = "grey30") +
+  geom_text(aes(label = percent(calidad, accuracy = 0.1)),
+            hjust = -0.15, size = 3) +
+  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.12))) +
+  scale_fill_manual(values = pal_nivel, name = NULL) +
+  labs(title = "Calidad del empleo por provincia",
+       subtitle = sprintf("Línea punteada: promedio nacional ponderado (%s)",
+                          percent(nac, accuracy = 0.1)),
+       x = "% de ocupados con empleo de calidad", y = NULL) +
+  theme(axis.text.y = element_text(size = 9),
+        panel.grid.major.y = element_blank())
+
+ggsave("figuras/g1_barras_provincias.png", g1,
+       width = 10, height = 10, dpi = 200, bg = "white")
+
+g2 <- ggplot(prov, aes(x = alojamiento, y = calidad)) +
+  geom_smooth(aes(weight = pob), method = "lm", formula = y ~ x,
+              colour = "grey30", fill = "grey85", linewidth = 0.8) +
+  geom_point(aes(size = pob, colour = nivel_turismo), alpha = 0.85) +
+  geom_text_repel(aes(label = provincia), size = 3.3, max.overlaps = Inf, seed = 1) +
+  scale_x_log10(labels = comma) +
+  scale_y_continuous(labels = percent) +
+  scale_size_area(max_size = 16, guide = "none") +
+  scale_colour_manual(values = pal_nivel, name = NULL) +
+  labs(title = "¿Más oferta turística, mejores empleos?",
+       subtitle = sprintf("Tamaño = población ocupada expandida | Spearman = %.2f (24 provincias)", rho),
+       x = "Establecimientos de alojamiento (escala log)", y = "% con empleo de calidad")
+
+ggsave("figuras/g2_burbujas_alojamiento_calidad.png", g2,
+       width = 10, height = 6, dpi = 200, bg = "white")
+
+g2
+
+renv::install("sandwich")
+
+# ============ Gráfico 3: brecha urbano-rural (mancuernas) ============
+brecha <- datos |>
+  group_by(provincia, zona) |>
+  summarise(calidad = weighted.mean(calidad_empleo, fexp), n = n(), .groups = "drop") |>
+  filter(n >= 30) |> select(-n) |>
+  pivot_wider(names_from = zona, values_from = calidad) |>
+  drop_na() |>
+  mutate(brecha = Urbano - Rural,
+         provincia = fct_reorder(provincia, brecha))
+
+g3 <- ggplot(brecha, aes(y = provincia)) +
+  geom_segment(aes(x = Rural, xend = Urbano, yend = provincia),
+               colour = "grey70", linewidth = 1.6) +
+  geom_point(aes(x = Rural,  colour = "Rural"),  size = 3.8) +
+  geom_point(aes(x = Urbano, colour = "Urbano"), size = 3.8) +
+  scale_x_continuous(labels = percent) +
+  scale_colour_manual(values = c(Rural = "#E76F51", Urbano = "#264653"), name = NULL) +
+  labs(title = "La brecha urbano-rural del empleo de calidad",
+       subtitle = "Ordenado de menor a mayor brecha",
+       x = "% con empleo de calidad", y = NULL) +
+  theme(axis.text.y = element_text(size = 9))
+ggsave("figuras/g3_mancuernas_urbano_rural.png", g3, width = 10, height = 10, dpi = 200, bg = "white")
+
+# ============ Gráfico 4: mapa de calor provincia x educación ============
+orden <- prov |> arrange(calidad) |> pull(provincia)
+
+mapa <- datos |>
+  group_by(provincia, educ) |>
+  summarise(calidad = weighted.mean(calidad_empleo, fexp), n = n(), .groups = "drop") |>
+  filter(n >= 30) |>
+  mutate(provincia = factor(provincia, levels = orden),
+         txt = if_else(calidad > 0.5, "white", "black"))
+
+g4 <- ggplot(mapa, aes(x = educ, y = provincia, fill = calidad)) +
+  geom_tile(colour = "white", linewidth = 0.6) +
+  geom_text(aes(label = percent(calidad, accuracy = 1), colour = txt), size = 2.9) +
+  scale_colour_identity() +
+  scale_fill_viridis_c(option = "magma", direction = -1, labels = percent,
+                       name = "Empleo de calidad") +
+  labs(title = "Educación y territorio: dónde se concentra el buen empleo",
+       subtitle = "Celdas con al menos 30 observaciones", x = NULL, y = NULL) +
+  theme(panel.grid = element_blank(), legend.position = "right",
+        axis.text.y = element_text(size = 9))
+ggsave("figuras/g4_mapa_calor_educacion.png", g4, width = 10, height = 10, dpi = 200, bg = "white")
+
+# ============ Gráfico 5: ridgeline de edad ============
+g5 <- ggplot(datos, aes(x = edad, y = nivel_turismo, fill = calidad_f)) +
+  geom_density_ridges(alpha = 0.65, scale = 1.1, colour = "white") +
+  scale_fill_manual(values = c("Empleo inadecuado" = "#E76F51",
+                               "Empleo de calidad" = "#2A9D8F"), name = NULL) +
+  labs(title = "Perfil etario del empleo según dinamismo turístico",
+       x = "Edad", y = NULL)
+ggsave("figuras/g5_ridgeline_edad.png", g5, width = 10, height = 6, dpi = 200, bg = "white")
+
+# ============ Gráfico 6: odds ratios (logit ponderado) ============
+# Antes, una sola vez en la Console:  renv::install("sandwich")
+library(sandwich)
+
+datos <- datos |> mutate(edad10 = edad / 10)
+
+mod <- glm(calidad_empleo ~ mujer + edad10 + urbano + educacion + idx_turismo,
+           data = datos, family = quasibinomial(), weights = fexp / mean(fexp))
+
+se <- sqrt(diag(vcovCL(mod, cluster = datos$provincia)))
+
+etiquetas <- c(mujer = "Mujer", edad10 = "Edad (+10 años)", urbano = "Zona urbana",
+               educacion = "Educación (+1 nivel)", idx_turismo = "Dinamismo turístico (+1 DE)")
+
+coefs <- tibble(term = names(coef(mod)), est = coef(mod), se = se) |>
+  filter(term != "(Intercept)") |>
+  mutate(or = exp(est), lo = exp(est - 1.96 * se), hi = exp(est + 1.96 * se),
+         etiqueta = fct_reorder(etiquetas[term], or))
+
+g6 <- ggplot(coefs, aes(x = or, y = etiqueta)) +
+  geom_vline(xintercept = 1, linetype = "dashed", colour = "grey40") +
+  geom_pointrange(aes(xmin = lo, xmax = hi), colour = "#264653", linewidth = 0.9, size = 0.8) +
+  scale_x_log10() +
+  labs(title = "Qué se asocia con tener un empleo de calidad",
+       subtitle = "Odds ratios (escala log), IC 95%, errores robustos por provincia",
+       x = "Odds ratio", y = NULL)
+ggsave("figuras/g6_odds_ratios.png", g6, width = 10, height = 6, dpi = 200, bg = "white")
+
+coefs   # tabla con los odds ratios
+
+g3
+
+g6
