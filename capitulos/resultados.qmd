@@ -1,3 +1,12 @@
+---
+title: "Resultados Econométricos"
+author: "Andy Lima"
+---
+
+# Resultados Econométricos
+
+## Estimación del modelo
+
 renv::install("readxl")
 library(readxl)
 datos <- read_excel("datos/base_final_turismo_empleo.xlsx")
