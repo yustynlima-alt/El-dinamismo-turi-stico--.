@@ -1,6 +1,6 @@
 ---
 title: "Resultados Econométricos"
-author: "Andy Lima"
+author: "Andy Lima, Isaac Guevara"
 ---
 
 # Resultados Econométricos
