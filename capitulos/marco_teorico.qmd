@@ -1,0 +1,139 @@
+---
+title: "Marco teórico"
+lang: es
+author: "Andy Lima, Isaac Guevara"
+---
+
+## Revisión de literatura
+
+### Esquema de la revisión
+
+La revisión reúne 50 artículos organizados en siete ejes temáticos, que van del vínculo general entre turismo y empleo hasta los métodos para medir la calidad del empleo.
+
+```{mermaid}
+flowchart LR
+    T["Turismo y calidad<br/>del empleo en Ecuador"]
+    T --> A["Turismo y empleo en Ecuador<br/>(13 artículos)"]
+    T --> B["Calidad del empleo y sus determinantes<br/>(7 artículos)"]
+    T --> C["Trabajo decente: evidencia internacional<br/>(5 artículos)"]
+    T --> D["Turismo comunitario, pobreza y desarrollo local<br/>(7 artículos)"]
+    T --> E["Talento humano y formación<br/>(10 artículos)"]
+    T --> F["Satisfacción y condiciones de trabajo<br/>(5 artículos)"]
+    T --> G["Género y empleo juvenil<br/>(3 artículos)"]
+```
+
+### Revisión por ejes temáticos
+
+#### Turismo y empleo en Ecuador
+
+Reinoso Haro y del Salto Dávila (2025) evalúan el impacto del turismo en el mercado laboral ecuatoriano. Es una referencia directa para la pregunta central de esta investigación, porque vincula la actividad turística con el empleo en el país.
+
+Quintana Puga (2024) examina el empleo en el sector turístico de Ecuador después de la pandemia de Covid-19. Permite contextualizar la evolución reciente del empleo turístico y los choques que afectaron al sector.
+
+El análisis comparativo entre data turística y empleo contrasta indicadores del turismo con indicadores del mercado laboral. Es cercano al objetivo de esta investigación.
+
+El análisis de la participación del turismo en los ingresos nacionales de Ecuador entre 2012 y 2023 sitúa el peso económico del sector. Aporta contexto macroeconómico para el problema de investigación.
+
+El artículo sobre el turismo en la economía ecuatoriana (*Journal of Tourism and Heritage Research*) analiza el papel del sector en la economía del país. Aporta contexto sobre su importancia económica.
+
+Arana Luna (2020) estudia la incidencia del turismo en el empleo del cantón La Maná en su tesis de ECOTEC. Aporta un caso local de la relación entre turismo y empleo.
+
+Burbano y Meredith (2021) analizan los efectos del crecimiento turístico en las islas Galápagos (*Journal of Sustainable Tourism*). Galápagos es una provincia clave en esta investigación, por su alta oferta turística y su alto empleo de calidad.
+
+El análisis post-pandemia y de perspectivas de reactivación del sector turístico en Guayaquil estudia la recuperación del sector. Aporta el contexto de un destino urbano importante.
+
+El estudio sobre la competitividad del sector turístico en Riobamba evalúa las condiciones del destino. Aporta una referencia sobre el dinamismo turístico a escala local.
+
+Roque Barrera y Uriguen Aguirre (2025) estudian la contribución del turismo al crecimiento económico de Ecuador (*Ciencia y Educación*). Aporta el argumento económico a favor del turismo.
+
+El artículo sobre el impacto del desempleo en el desarrollo sostenible del turismo en Ecuador (*Opuntia Brava*) relaciona el mercado laboral con la sostenibilidad del sector. Aporta una conexión entre empleo y turismo en sentido inverso.
+
+El trabajo con modelo Probit sobre los determinantes del gasto del turista en el corredor Santa Bárbara, Azuay, estudia la demanda turística. Aporta el lado del gasto turístico, y utiliza un tipo de modelo de elección binaria cercano al de esta investigación.
+
+El artículo de Atlantis Press sobre indicadores económicos del turismo por regiones de Ecuador considera el empleo formal e informal. Es cercano al enfoque territorial de esta investigación.
+
+#### Calidad del empleo y sus determinantes
+
+Quintero Montaño, Linthon Delgado y Espinosa Calderón (2025) estudian los efectos asimétricos de la pandemia de Covid-19 sobre la calidad del empleo urbano. Interesa porque trata la calidad del empleo y no solo su cantidad.
+
+Flores (2024) analiza el empleo adecuado en Ecuador durante 2023 con modelos Logit, Probit y aprendizaje automático. Es cercano a la metodología de esta investigación, por usar modelos de elección binaria sobre el empleo adecuado.
+
+El estudio de la Universidad del Azuay sobre los factores relacionados con la calidad del empleo en Ecuador entre 2019 y 2023 emplea un modelo Logit. Sirve de antecedente metodológico para estimar la probabilidad de tener empleo de calidad.
+
+El trabajo de *Innova Science Journal* aplica minería de datos al ingreso laboral en Ecuador y compara el modelo de probabilidad lineal, el Logit y el Probit. Aporta criterios para justificar la elección entre especificaciones de modelos binarios.
+
+Vera Ortega et al. (2026) analizan los cambios estructurales en la composición del empleo adecuado en Ecuador (*Polo del Conocimiento*). Aporta la evolución reciente del empleo adecuado.
+
+El estudio sobre los determinantes de la situación laboral de los ecuatorianos compara modelos estadísticos (*Revista de Ciencias Sociales*). Es un antecedente metodológico para elegir el modelo.
+
+El análisis de la dinámica del empleo en Ecuador entre 2007 y 2016 con un modelo Logit (Universidad Andina) estudia la evolución del empleo en el país. Es un antecedente metodológico.
+
+#### Trabajo decente y calidad del empleo turístico: evidencia internacional
+
+Gordillo y Longart (2023) discuten si la política turística de Ecuador avanza hacia la Agenda 2030 en materia de trabajo decente. Conecta el turismo con el ODS 8 y es base para el marco teórico sobre trabajo decente.
+
+El artículo de *Tourism Review* pregunta si el desarrollo turístico se asocia con empleo de baja calidad. Su pregunta es muy cercana a la de esta investigación, por lo que es una referencia central.
+
+El estudio sobre un índice de calidad del empleo para el sector turístico en Uruguay propone una forma de medir la calidad del empleo en turismo. Es una referencia para definir y medir calidad del empleo.
+
+Nguyen et al. (2025) estudian la contribución del turismo al empleo con evidencia global (*Journal of Economics and Development*). Aporta el contexto internacional de la relación entre turismo y empleo.
+
+Ribeiro et al. (2024) analizan los determinantes del empleo turístico en microrregiones de Brasil (*Journal of Regional Science*). Su enfoque subnacional es comparable con el análisis provincial de esta investigación.
+
+#### Turismo comunitario, pobreza y desarrollo local
+
+Aucancela Chimbolema et al. (2025) analizan los efectos del turismo comunitario sobre indicadores socioeconómicos de las provincias del oriente ecuatoriano. Aporta una mirada provincial sobre territorios amazónicos.
+
+El estudio sobre el impacto del turismo en el alivio de la pobreza en Ecuador conecta la actividad turística con el bienestar de los hogares. Aporta el argumento del turismo como herramienta de desarrollo.
+
+El trabajo sobre emprendimientos sociales y turismo en la costa ecuatoriana trata iniciativas locales de base comunitaria. Aporta casos de turismo como fuente de ingresos en territorios costeros.
+
+El estudio sobre el prisma comunitario de los impactos del turismo en Puerto López analiza cómo percibe la comunidad los efectos de la actividad turística. Aporta una perspectiva local de los impactos.
+
+El estudio de percepción sobre la influencia del turismo en la Laguna de Quilotoa recoge las opiniones de la población local. Aporta evidencia cualitativa sobre los efectos del turismo en una comunidad andina.
+
+El trabajo sobre turismo comunitario como alternativa para el desarrollo local en Lago Verde, Quilotoa, plantea esta modalidad como vía de desarrollo para la comunidad. Complementa los estudios de impacto en la zona.
+
+El estudio sobre el turismo como motor de desarrollo económico local en Quevedo entre 2000 y 2022 (*Revista Veritas*) revisa su papel en la economía del cantón. Aporta un caso de desarrollo local.
+
+#### Talento humano, competencias y formación
+
+El estudio sobre las tendencias en la demanda laboral del sector turístico ecuatoriano (*Siembra*, Redalyc) describe qué perfiles busca el sector. Aporta la mirada de la demanda de trabajo turístico.
+
+El trabajo sobre competencias laborales en el sector turístico propone un modelo de formación profesional para Chimborazo. Relaciona la formación con las exigencias del sector, un factor vinculado con la calidad del empleo.
+
+El análisis de la empleabilidad de graduados de Hotelería y Turismo en Guayaquil trata la inserción de los egresados en el mercado laboral turístico. Aporta la relación entre formación y acceso al empleo.
+
+El estudio sobre políticas y estrategias de inserción laboral y calidad del servicio turístico en Tena (*Ciencia Latina*) vincula la inserción de trabajadores con la calidad del servicio. Aporta un caso del oriente ecuatoriano.
+
+El trabajo sobre gestión del talento humano para mejorar los servicios turísticos en Tena, Napo, trata las prácticas de gestión de personal en el sector. Complementa la visión de la calidad del empleo desde las empresas.
+
+El modelo de gestión de talento humano para el sector turístico (*Revista Ecociencia*) propone un esquema de administración del personal. Aporta una visión organizacional del trabajo turístico.
+
+Carrera Burneo analiza la oferta y la demanda de carreras de turismo y hotelería en Ecuador. Aporta la relación entre formación universitaria y mercado laboral turístico.
+
+El trabajo sobre la calidad de la enseñanza y su vínculo con el turismo comunitario en Ecuador (*Polo del Conocimiento*) relaciona la formación con esta modalidad turística. Aporta la dimensión educativa.
+
+El estudio sobre las destrezas de inglés que requiere el sector de hotelería y turismo en El Oro identifica una competencia demandada por los empleadores. Aporta un ejemplo de brechas de habilidades.
+
+El estudio sobre el rol del turismo en la generación de empleo, con graduados de turismo de la Universidad de Cuenca, trata la inserción laboral de los egresados. Aporta la relación entre formación y empleo.
+
+#### Satisfacción, clima laboral y condiciones de trabajo
+
+El estudio sobre satisfacción laboral en el sector gastronómico de destinos turísticos de Manabí aborda la situación de los trabajadores en una provincia con amplia oferta turística. Es útil para interpretar el caso de Manabí en esta investigación.
+
+El estudio sobre la percepción de la seguridad y la salud en la ENEMDU Ecuador 2018 trata las condiciones de trabajo desde la encuesta oficial del mercado laboral. Aporta la dimensión de seguridad laboral de la calidad del empleo.
+
+Gómez-García et al. (2024) presentan el perfil de la seguridad y la salud en el trabajo en Ecuador. Aporta contexto de las condiciones laborales del país.
+
+El artículo sobre la satisfacción laboral en el sector hotelero de Cuenca (*ESPACIOS*) analiza la percepción de los trabajadores sobre su empleo. Aporta la dimensión subjetiva de la calidad del empleo.
+
+El análisis del clima organizacional y la satisfacción laboral en el sector de alojamiento de Quito y Cuenca estudia el ambiente de trabajo en los hoteles. Aporta la dimensión organizacional de la calidad del empleo.
+
+#### Género y empleo juvenil
+
+El análisis de la participación de la mujer en el mercado laboral de la industria turística de Ecuador aborda la dimensión de género. Es pertinente porque la brecha de género es uno de los resultados que esta investigación también examina.
+
+El trabajo del CEDLAS sobre empleo juvenil en turismo adopta un enfoque multidimensional en América Latina. Aporta una mirada regional y la dimensión de edad.
+
+El análisis del impacto de las medidas de política económica sobre el empleo juvenil en Quito usa modelos Logit y Probit. Aporta la dimensión juvenil y la metodología de elección binaria.
