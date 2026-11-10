@@ -1,8 +1,5 @@
-title: "El dinamismo turístico y su relación con la calidad del empleo en Ecuador"
-  author: "Andy Lima"
-# Introducción
+title: "El dinamismo turístico y su relación con la calidad del empleo en Ecuador" author: "Andy Lima, Isaac Guevara" \# Introducción
 
 En las últimas décadas, el turismo se ha posicionado como uno de los sectores económicos con mayor capacidad de dinamización territorial, atracción de inversiones y generación de empleo en el Ecuador. Sin embargo, en la literatura económica reciente existe un debate abierto no solo sobre la cantidad de puestos de trabajo que crea el sector, sino fundamentalmente sobre su calidad —caracterizada a menudo por la informalidad, la estacionalidad, los niveles de ingresos y el acceso a la seguridad social—.
 
 A nivel provincial, las disparidades en la infraestructura, la llegada de visitantes y la madurez de la oferta turística generan efectos heterogéneos sobre los mercados laborales locales. Mientras que algunas provincias presentan un alto dinamismo turístico...
-
