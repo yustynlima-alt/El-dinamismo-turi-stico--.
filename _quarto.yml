@@ -3,7 +3,7 @@ project:
 
 book:
   title: "El dinamismo turístico y su relación con la calidad del empleo en Ecuador"
-  author: "Andy Lima"
+  author: "Andy Lima, Isaac Guevara"
   date: "23/10/2026"
   chapters:
     - index.qmd
